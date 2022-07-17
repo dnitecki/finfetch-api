@@ -20,7 +20,6 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-
     category = models.ForeignKey(
         Category, on_delete=models.PROTECT, default=1)
     title = models.CharField(max_length=250)

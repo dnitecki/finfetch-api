@@ -124,9 +124,17 @@ STATIC_URL = 'static/'
 
 REST_FRAMEWORK ={
 'DEFAULT_PERMISSION_CLASSES': [
-    'rest_framework.permissions.AllowAny'
+    'rest_framework.permissions.IsAuthenticatedOrReadOnly'
 ]
 }
+
+#Permissions:
+#AllowAny
+#IsAuthenticated
+#IsAdminUser
+#IsAuthenticatedOrReadOnly
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000"
