@@ -18,7 +18,7 @@ def get_data(request,format=None):
         elif start =="":
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
         stock=pdr.get_data_yahoo(ticker, start=start, end=end)
-        return Response(stock, status=status.HTTP_200_OK)
+        return Response({'data':stock}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def getStockInfo(request, format=None):
@@ -28,7 +28,7 @@ def getStockInfo(request, format=None):
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
         stock = yf.Ticker(ticker)
         stockInfo = stock.info
-        return Response(stockInfo, status=status.HTTP_200_OK)
+        return Response({'data':stockInfo}, status=status.HTTP_200_OK)
 
 @api_view(["GET"])
 def getStockNews(request, format=None):
@@ -38,4 +38,4 @@ def getStockNews(request, format=None):
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
         stock = yf.Ticker(ticker)
         stockNews = stock.news
-        return Response(stockNews, status=status.HTTP_200_OK)
+        return Response({'data':stockNews}, status=status.HTTP_200_OK)
