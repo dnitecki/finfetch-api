@@ -15,7 +15,7 @@ def get_data(request,format=None):
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
         elif start =="":
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
-        elif start =="":
+        elif end =="":
             return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
         stock=pdr.get_data_yahoo(ticker, start=start, end=end)
         return Response({'data':stock}, status=status.HTTP_200_OK)
