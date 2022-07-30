@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from . import serializer as user_serializer
 from . import services
 
-@api_view(['POST'])
+# @api_view(['POST'])
 class Register(views.APIView):
 
     def post(self, request):
@@ -17,7 +17,7 @@ class Register(views.APIView):
 
         return response.Response(data=serializer.data)
 
-@api_view(['POST'])
+# @api_view(['POST'])
 class Login(views.APIView):
 
     def post(self, request):
