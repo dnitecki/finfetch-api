@@ -1,2 +1,9 @@
 .venv\Scripts\activate
 py manage.py runserver
+
+
+
+{
+"email":"dominick.nitecki95@gmail.com",
+"password":"Bambam12"
+}

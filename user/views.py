@@ -2,6 +2,7 @@ from rest_framework import views, response, exceptions, permissions
 from rest_framework.decorators import api_view
 from . import serializer as user_serializer
 from . import services
+from . import authentication
 
 # @api_view(['POST'])
 class Register(views.APIView):
@@ -40,3 +41,30 @@ class Login(views.APIView):
         resp.set_cookie(key="jwt", value=token, httponly=True)
 
         return resp
+
+
+class ViewUser(views.APIView):
+
+# Endpoint only used if authenticated
+
+    authentication_classes = (authentication.CustomUserAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+
+        serializer = user_serializer.UserSerializer(user)
+
+        return response.Response(serializer.data)
+
+class Logout(views.APIView):
+    authentication_classes = (authentication.CustomUserAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request):
+        resp = response.Response()
+        resp.delete_cookie("jwt")
+        resp.data = {"message": "Logged out successfully"}
+
+        return resp
+
