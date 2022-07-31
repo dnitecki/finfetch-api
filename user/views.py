@@ -45,7 +45,7 @@ class Login(views.APIView):
 
 class ViewUser(views.APIView):
 
-# Endpoint only used if authenticated
+    # Endpoint only used if authenticated
 
     authentication_classes = (authentication.CustomUserAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
@@ -58,6 +58,9 @@ class ViewUser(views.APIView):
         return response.Response(serializer.data)
 
 class Logout(views.APIView):
+
+    # Endpoint only used if authenticated
+
     authentication_classes = (authentication.CustomUserAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
 
