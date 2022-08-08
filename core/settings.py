@@ -165,12 +165,12 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://10.0.0.183:3000"
-]
-CORS_ORIGIN_WHITELIST = (
-"http://10.0.0.183:3000"
-)
+# CORS_ALLOWED_ORIGINS = [
+#     "http://10.0.0.183:3000"
+# ]
+# CORS_ORIGIN_WHITELIST = (
+# "http://10.0.0.183:3000"
+# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
