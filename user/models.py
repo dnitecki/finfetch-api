@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import models as auth_models
+from rest_framework_api_key.models import AbstractAPIKey
+from rest_framework_api_key.models import APIKey
 from django.utils import timezone
 
 class UserManager(auth_models.BaseUserManager):
@@ -13,7 +15,7 @@ class UserManager(auth_models.BaseUserManager):
         user.is_staff = is_staff
         user.is_superuser = is_superuser
         user.save()
-
+                
         return user
         
     def create_superuser(self, email: str, password: str) -> "User":
@@ -39,4 +41,5 @@ class User(auth_models.AbstractUser):
     REQUIRED_FIELDS = []
 
 
-
+# class UserApiKey(AbstractAPIKey):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="api_keys")

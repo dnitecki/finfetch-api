@@ -1,5 +1,5 @@
 from rest_framework import views, response, exceptions, permissions
-from rest_framework.decorators import api_view
+from rest_framework_api_key.models import APIKey
 from . import serializer as user_serializer
 from . import services
 from . import authentication
@@ -12,6 +12,7 @@ class Register(views.APIView):
 
         data = serializer.validated_data
         serializer.instance = services.create_user(user=data)
+        
 
         print(data)
 
