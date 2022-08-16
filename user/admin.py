@@ -6,6 +6,8 @@ class UserAdmin(admin.ModelAdmin):
         "id",
         "email",
         "created",
+        "key",
+        "api_key",
         "is_staff",
         "is_superuser",
     )

@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import permissions, status
+from rest_framework_api_key.permissions import HasAPIKey
 from pandas_datareader import data as pdr
 import yfinance as yf
 
