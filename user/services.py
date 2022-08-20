@@ -15,6 +15,7 @@ class UserDataClass:
     password :str = None
     id: int = None
     created: str = None
+    akey: str = None
 
 
     @classmethod
@@ -22,7 +23,8 @@ class UserDataClass:
         return cls(
             email=user.email,
             id=user.id,
-            created = user.created
+            created = user.created,
+            key = user.key
 
         )
 
