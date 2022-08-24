@@ -43,7 +43,7 @@ class Login(views.APIView):
 
         resp = response.Response()
 
-        resp.set_cookie(key="jwt", value=token, samesite='None', secure=True, httponly=True)
+        resp.set_cookie(key="jwt", value=token, httponly=True)
         # resp.set_cookie(key="jwt", value=token, httponly=True)
         return resp
 
