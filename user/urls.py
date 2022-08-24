@@ -4,6 +4,7 @@ from user import views
 app_name = 'user'
 
 urlpatterns= [
+    path("csrf/", views.get_csrf, name="api-csrf"),
     path("register/", views.Register.as_view(), name="register"),
     path("login/", views.Login.as_view(), name="login"),
     path("user/", views.ViewUser.as_view(), name="user"),

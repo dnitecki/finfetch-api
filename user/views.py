@@ -1,8 +1,14 @@
 from rest_framework import views, response, exceptions, permissions
-from rest_framework_api_key.models import APIKey
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
 from . import serializer as user_serializer
 from . import services
 from . import authentication
+
+def get_csrf(request):
+    response = JsonResponse({"Info": "Success - Set CSRF cookie"})
+    response["X-CSRFToken"] = get_token(request)
+    return response
 
 class Register(views.APIView):
 
