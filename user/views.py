@@ -4,7 +4,6 @@ from django.middleware.csrf import get_token
 from . import serializer as user_serializer
 from . import services
 from . import authentication
-# from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 def get_csrf(request):
