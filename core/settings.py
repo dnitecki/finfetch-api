@@ -26,7 +26,7 @@ JWT_SECRET = "finfetch-jwt-secret-askjdkajnkjnadjknsakdjnkdjnadkjnad"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -138,14 +138,17 @@ REST_FRAMEWORK ={
 
 # SESSION_COOKIE_SAMESITE = 'None'
 
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-ALLOWED_HOSTS=['*']
-
+ALLOWED_HOSTS=["*"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
 # CORS_ALLOW_METHODS = [
 #     "DELETE",
 #     "GET",
@@ -165,15 +168,15 @@ ALLOWED_HOSTS=['*']
 #     "x-csrftoken",
 #     "x-requested-with",
 # ]
-CSRF_COOKIE_SAMESITE = "Lax"
-SESSION_COOKIE_SAMESITE = "Lax"
-CSRF_COOKIE_HTTPONLY = True
-SESSION_COOKIE_HTTPONLY = True
-CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# CSRF_COOKIE_SAMESITE = "Lax"
+# SESSION_COOKIE_SAMESITE = "Lax"
+# CSRF_COOKIE_HTTPONLY = True
+# SESSION_COOKIE_HTTPONLY = True
+# CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
+# CORS_ALLOWED_ORIGINS = [
+# "http://localhost:3000",
+# "http://127.0.0.1:3000",
+# ]
 # CORS_ORIGIN_WHITELIST = (
 # "http://10.0.0.183:3000"
 # )
@@ -182,6 +185,5 @@ CORS_ALLOWED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = "user.User"

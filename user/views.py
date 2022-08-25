@@ -4,6 +4,8 @@ from django.middleware.csrf import get_token
 from . import serializer as user_serializer
 from . import services
 from . import authentication
+# from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 def get_csrf(request):
     response = JsonResponse({"Info": "Success - Set CSRF cookie"})
@@ -11,7 +13,7 @@ def get_csrf(request):
     return response
 
 class Register(views.APIView):
-
+    @csrf_exempt
     def post(self, request):
         serializer = user_serializer.UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -25,7 +27,7 @@ class Register(views.APIView):
         return response.Response(data=serializer.data)
 
 class Login(views.APIView):
-
+    @csrf_exempt
     def post(self, request):
         email = request.data["email"]
         password = request.data["password"]
@@ -43,18 +45,19 @@ class Login(views.APIView):
 
         resp = response.Response()
 
-        resp.set_cookie(key="jwt", value=token, httponly=True)
+        resp.set_cookie(key="jwt", value=token, httponly=True, secure=True,samesite="None")
         # resp.set_cookie(key="jwt", value=token, httponly=True)
         return resp
 
 
 class ViewUser(views.APIView):
+    
 
     # Endpoint only used if authenticated
 
     authentication_classes = (authentication.CustomUserAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
-
+    @csrf_exempt
     def get(self, request):
         user = request.user
 
@@ -68,7 +71,7 @@ class Logout(views.APIView):
 
     authentication_classes = (authentication.CustomUserAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
-
+    @csrf_exempt
     def post(self, request):
         resp = response.Response()
         resp.delete_cookie(key="jwt")
