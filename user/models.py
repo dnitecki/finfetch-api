@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework_api_key import models as apiKey
 from django.contrib.auth import models as auth_models
 from rest_framework_api_key.models import AbstractAPIKey
 from rest_framework_api_key.models import APIKey
@@ -34,8 +35,8 @@ class User(auth_models.AbstractUser):
     password = models.CharField(max_length=255)
     username = None
     created = models.DateTimeField(default=timezone.now)
-    api_key, key = APIKey.objects.create_key(name="api-key")
-
+    # api_key, key = APIKey.objects.create_key(name="api-key")
+    key = models.CharField(max_length=255)
     objects = UserManager()
 
     USERNAME_FIELD = "email"

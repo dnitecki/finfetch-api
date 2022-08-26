@@ -2,6 +2,7 @@ import dataclasses
 from . import models
 import datetime
 import jwt
+from rest_framework_api_key.models import APIKey
 from django.conf import settings
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -15,7 +16,7 @@ class UserDataClass:
     password :str = None
     id: int = None
     created: str = None
-    akey: str = None
+    key: str = None
 
 
     @classmethod
@@ -34,7 +35,9 @@ def create_user(user: "UserDataClass") -> "UserDataClass":
     )
     if user.password is not None:
         instance.set_password(user.password)
-
+    api_key, key = APIKey.objects.create_key(name="api-key")
+    instance.key = key
+    print("test",api_key, key)
     instance.save()
 
     return UserDataClass.from_instance(instance)
