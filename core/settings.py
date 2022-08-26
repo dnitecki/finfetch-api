@@ -128,12 +128,12 @@ REST_FRAMEWORK ={
 'DEFAULT_PERMISSION_CLASSES': [
     'rest_framework.permissions.AllowAny'
 ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        # SessionAuthentication may interfere with mobile API requests.
-        # If you are experiencing ssues, try commenting out the following line.
-        'rest_framework.authentication.SessionAuthentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.TokenAuthentication',
+    #     # SessionAuthentication may interfere with mobile API requests.
+    #     # If you are experiencing ssues, try commenting out the following line.
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ),
 }
 
 #Permissions:
