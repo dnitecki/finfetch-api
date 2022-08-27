@@ -44,7 +44,7 @@ class Login(views.APIView):
 
         resp = response.Response()
 
-        resp.set_cookie(key="jwt", value=token, httponly=True, secure=True,samesite="None")
+        resp.set_cookie(key="jwt", value=token, httponly=True, secure=True,samesite="None", path="/")
         # resp.set_cookie(key="jwt", value=token, httponly=True) #FOR POSTMAN
         return resp
 
@@ -68,12 +68,13 @@ class Logout(views.APIView):
 
     # Endpoint only used if authenticated
 
-    # authentication_classes = (authentication.CustomUserAuthentication,)
-    # permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (authentication.CustomUserAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
     @csrf_exempt
     def post(self, request):
         resp = response.Response()
-        resp.delete_cookie("jwt")
+        resp.delete_cookie(key="jwt",samesite="None")
+        # resp.delete_cookie(key="jwt",samesite="None") #POSTMAN
         resp.data = {"message": "Logged out successfully"}
 
         return resp
