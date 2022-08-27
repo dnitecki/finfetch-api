@@ -37,7 +37,6 @@ def create_user(user: "UserDataClass") -> "UserDataClass":
         instance.set_password(user.password)
     api_key, key = APIKey.objects.create_key(name="api-key")
     instance.key = key
-    print("test",api_key, key)
     instance.save()
 
     return UserDataClass.from_instance(instance)

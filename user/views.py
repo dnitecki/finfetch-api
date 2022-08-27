@@ -19,9 +19,6 @@ class Register(views.APIView):
 
         data = serializer.validated_data
         serializer.instance = services.create_user(user=data)
-        
-
-        print(data)
 
         return response.Response(data=serializer.data)
 
