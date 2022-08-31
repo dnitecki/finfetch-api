@@ -8,7 +8,7 @@ from pandas_datareader import data as pdr
 import yfinance as yf
 
 class GetStocks(APIView):
-    # permission_classes = [HasAPIKey]
+    permission_classes = [HasAPIKey]
 
     def get(self, request):
         if request.method =='GET':
