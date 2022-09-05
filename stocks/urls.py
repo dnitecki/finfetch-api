@@ -6,8 +6,8 @@ app_name = 'stocks'
 
 urlpatterns = [
     path('stock', views.GetStocks.as_view() ),
-    path('stock/info', views.getStockInfo),
-    path('stock/news', views.getStockNews),
+    path('stock/info', views.GetStockInfo.as_view()),
+    path('stock/news', views.GetStockNews.as_view()),
 ]
 
 
