@@ -25,22 +25,22 @@ class GetStocks(APIView):
             stock=pdr.get_data_yahoo(ticker, start=start, end=end)
             return Response({'data':stock}, status=status.HTTP_200_OK)
 
-@api_view(['GET'])
-def getStockInfo(request, format=None):
-    if request.method =='GET':
-        ticker = request.GET.get('ticker',"")
-        if ticker == "":
-            return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
-        stock = yf.Ticker(ticker)
-        stockInfo = stock.info
-        return Response({'data':stockInfo}, status=status.HTTP_200_OK)
+class GetStockInfo(APIView):
+    def get(self,request):
+        if request.method =='GET':
+            ticker = request.GET.get('ticker',"")
+            if ticker == "":
+                return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
+            stock = yf.Ticker(ticker)
+            stockInfo = stock.info
+            return Response({'data':stockInfo}, status=status.HTTP_200_OK)
 
-@api_view(["GET"])
-def getStockNews(request, format=None):
-    if request.method =="GET":
-        ticker = request.GET.get('ticker',"")
-        if ticker =="":
-            return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
-        stock = yf.Ticker(ticker)
-        stockNews = stock.news
-        return Response({'data':stockNews}, status=status.HTTP_200_OK)
+class GetStockNews(APIView):
+    def get(self,request):
+        if request.method =="GET":
+            ticker = request.GET.get('ticker',"")
+            if ticker =="":
+                return Response("Missing Required Parameters", status=status.HTTP_400_BAD_REQUEST)
+            stock = yf.Ticker(ticker)
+            stockNews = stock.news
+            return Response({'data':stockNews}, status=status.HTTP_200_OK)
