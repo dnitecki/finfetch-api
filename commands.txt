@@ -3,3 +3,4 @@
 py manage.py runserver
 eb init -p python-3.8 app-finfetch-api 
 eb create -i t2.medium env-finfetch-api
+eb deploy  
