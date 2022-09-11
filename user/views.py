@@ -35,7 +35,7 @@ class Login(views.APIView):
 
         resp = response.Response()
 
-        resp.set_cookie(key="jwt", value=token, httponly=True, secure=True,samesite="None", path="/")
+        resp.set_cookie(key="jwt", value=token, httponly=True, secure=False,samesite="None", path="/")
         # resp.set_cookie(key="jwt", value=token, httponly=True) #FOR POSTMAN
         return resp
 
