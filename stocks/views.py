@@ -26,6 +26,8 @@ class GetStocks(APIView):
             return Response({'data':stock}, status=status.HTTP_200_OK)
 
 class GetStockInfo(APIView):
+    permission_classes = [HasAPIKey]
+
     def get(self,request):
         if request.method =='GET':
             ticker = request.GET.get('ticker',"")
@@ -36,6 +38,8 @@ class GetStockInfo(APIView):
             return Response({'data':stockInfo}, status=status.HTTP_200_OK)
 
 class GetStockNews(APIView):
+    permission_classes = [HasAPIKey]
+    
     def get(self,request):
         if request.method =="GET":
             ticker = request.GET.get('ticker',"")
