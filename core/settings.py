@@ -27,9 +27,6 @@ JWT_SECRET = "finfetch-jwt-secret-askjdkajnkjnadjknsakdjnkdjnadkjnad"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
