@@ -173,6 +173,7 @@ ALLOWED_HOSTS=["*"]
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://www.finfetch.net/"
 ]
 # CORS_ALLOW_METHODS = [
 #     "DELETE",
