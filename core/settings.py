@@ -175,6 +175,11 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://www.finfetch.net"
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://www.finfetch.net"
+]
 # CORS_ALLOW_METHODS = [
 #     "DELETE",
 #     "GET",
@@ -199,10 +204,7 @@ CSRF_TRUSTED_ORIGINS = [
 # CSRF_COOKIE_HTTPONLY = True
 # SESSION_COOKIE_HTTPONLY = True
 CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken","Set-Cookie","Cookie"]
-# CORS_ALLOWED_ORIGINS = [
-# "http://localhost:3000",
-# "http://127.0.0.1:3000",
-# ]
+
 # CORS_ORIGIN_WHITELIST = (
 # "http://10.0.0.183:3000"
 # )
